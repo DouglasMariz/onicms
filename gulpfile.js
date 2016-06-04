@@ -24,11 +24,13 @@ elixir(function(mix) {
 		'sweetalert.css',
 		'trumbowyg.css',
     	'dashboard.css',
+        'jquery.perfectscrollbar.css',
     	'_admin.css'
 	], 'public/assets/admin/css/admin.min.css', 'resources/assets/admin/css')
 	.scripts([
         'jquery.min.js',
         'bootstrap.js',
+        'jquery.perfectscrollbar.js',
         'light-bootstrap-dashboard.js',
         'jquery.maskedinput.min.js',
         'bootstrap-tokenfield.js',
@@ -45,7 +47,7 @@ elixir(function(mix) {
    	.copy(
        'resources/assets/admin/img', 'public/assets/admin/img'
     ).copy(
-       'resources/assets/fonts', 'public/assets/fonts'
+       'resources/assets/admin/fonts', 'public/assets/admin/fonts'
     );
     
 });

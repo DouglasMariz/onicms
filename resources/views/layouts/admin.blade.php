@@ -4,14 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{{ asset('assets/img/favicon.png') }}}" rel="shortcut icon" sizes="16x16 32x32" />
+    <link href="{{{ asset('assets/admin/img/favicon.png') }}}" rel="shortcut icon" sizes="16x16 32x32" />
     <meta name="description" content="Gerenciador de Conteúdo" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta name="robots" content="noindex,nofollow">
 
-    <!-- removido temporariamente pois estamos sem net -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'> -->
-    {!!Html::style('assets/css/admin.min.css')!!}
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+    {!!Html::style('assets/admin/css/admin.min.css')!!}
     @stack('css')
 
     <title>Admin @yield('title')</title>
@@ -39,7 +38,7 @@
         </div>
     </div>
    <!-- JavaScripts -->
-    {{ HTML::script('assets/js/admin.min.js') }}
+    {{ HTML::script('assets/admin/js/admin.min.js') }}
     @stack('js')
 </body>
 </html>

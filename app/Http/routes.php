@@ -8,9 +8,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin'], function () {
 
 	Route::group(['middleware' => 'auth'], function () {
 
-		Route::get('/', function () {
-			return 'Admin';
-		});
+		Route::get('/', 'Cms\HomeController@index');
 
 	});
 });
