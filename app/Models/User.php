@@ -1,6 +1,12 @@
 <?php
 
-namespace Onicms;
+/**
+*   Este model está na raiz de Models porque pode ser usado 
+*   tanto no admin quando para logar um usuário no site,
+*   então dessa forma não misturamos as coisas
+**/
+
+namespace Onicms\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

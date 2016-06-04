@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Onicms\User::class,
+            'model' => Onicms\Models\User::class,
         ],
 
         // 'users' => [

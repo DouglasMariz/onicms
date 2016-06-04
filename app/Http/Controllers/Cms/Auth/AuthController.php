@@ -1,8 +1,8 @@
 <?php
 
-namespace Onicms\Http\Controllers\Auth;
+namespace Onicms\Http\Controllers\Cms\Auth;
 
-use Onicms\User;
+use Onicms\Models\User;
 use Validator;
 use Onicms\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
+    private $view_path = 'admin';
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -28,7 +29,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new authentication controller instance.
@@ -38,6 +39,20 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+    }
+
+    /**
+     * Sobrescrevendo o caminho view para login no cms
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public function getLogin()
+    {
+       if (\Auth::check()) {
+            return redirect($this->redirectTo);
+       }
+       return view('admin/login/login');
     }
 
     /**
