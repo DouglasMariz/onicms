@@ -1,18 +1,20 @@
 <?php
+Route::get('admin/login', 'Cms\Auth\AuthController@getLogin');
+Route::post('admin/login', 'Cms\Auth\AuthController@postLogin');
+Route::get('admin/logout', 'Cms\Auth\AuthController@logout');
 
-Route::group(['middleware' => 'web', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => 'auth', 'prefix' => 'admin' ], function () {
 
- 	Route::get('login', 'Cms\Auth\AuthController@getLogin');
-	Route::post('login', 'Cms\Auth\AuthController@postLogin');
-	Route::get('logout', 'Cms\Auth\AuthController@logout');
+	Route::get('/', 'Cms\HomeController@index');
 
-	Route::group(['middleware' => 'auth'], function () {
+	Route::resource('user', 'Cms\UserController');
+	// Atualizar Status Ajax:
+	Route::post('user/{id}/atualizar_status','Cms\UserController@atualizar_status');
 
-		Route::get('/', 'Cms\HomeController@index');
-
-	});
 });
 
+// Front:
 Route::get('/', function () {
-    return redirect('admin/login');
+	return redirect('admin/login');
 });
+
