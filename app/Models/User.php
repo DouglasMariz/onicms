@@ -11,8 +11,13 @@ namespace Onicms\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Laracasts\Presenter\PresentableTrait;
+
 class User extends Authenticatable
 {
+    use PresentableTrait;
+    protected $presenter = 'Onicms\Presenters\Cms\UserPresenter';
+
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     /**
@@ -32,18 +37,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    /**
-     * Retorna apenas o primeiro nome do usuário
-     *
-     * @var string nome
-     */
-    public function first_name()
-    {
-        $nome = explode(' ',$this->name);
-        if(is_array($nome))
-            $nome = $nome[0];
-
-        return ucfirst($nome);
-    }
 }

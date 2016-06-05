@@ -14,7 +14,7 @@
 	        <ul class="nav navbar-nav navbar-right">
 		        <li class="dropdown">
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> 
-		            	{{ Auth::user()->first_name() }} <span class="caret"></span></a>
+		            	{{ Auth::user()->present()->first_name }} <span class="caret"></span></a>
 		            <ul class="dropdown-menu">
 		                <li>
 		                	<a href="{{ url('admin/user/'.Auth::user()->id.'/edit') }}">Meus dados</a>

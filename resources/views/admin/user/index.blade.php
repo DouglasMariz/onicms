@@ -17,6 +17,8 @@
                         <th data-field="name" data-sortable="true" >Nome</th>
                         <th data-field="email" data-sortable="true" >E-mail</th>
                         <th data-field="status" data-sortable="true" >Status</th>
+                        <th data-field="created_at" data-sortable="true" >Criado em</th>
+                        <th data-field="updated_at" data-sortable="true" >Modificado</th>
                         <th data-click-to-select="false" data-align="center" data-searchable="false">Ações</th>
                     </tr>
                     </thead>
@@ -33,6 +35,8 @@
                             </td>
                             <td>{{ $registro->email }}</td>
                             <td>{!! $registro->html_toogle !!}</td>
+                            <td>{{ $registro->present()->createdAt }}</td>
+                            <td>{{ $registro->present()->updatedAt }}</td>
                             <td>
                                 @include('admin/_partes/_botoes_acao')
                             </td>

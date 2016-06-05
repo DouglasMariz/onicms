@@ -158,6 +158,9 @@ return [
 
         Collective\Html\HtmlServiceProvider::class, // helper do form/html
 
+        // Deixar o Carbon em pt_br
+        Onicms\Providers\CarbonLanguageProvider::class,
+
     ],
 
     /*

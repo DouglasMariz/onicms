@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    Seja bem-vindo, <strong>{{ Auth::user()->first_name() }}</strong>!
+                    Seja bem-vindo, <strong>{{ Auth::user()->present()->first_name }}</strong>!
                 </div>
             </div>
         </div>
