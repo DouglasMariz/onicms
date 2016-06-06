@@ -13,6 +13,7 @@
                 @else
                     {!! Form::model($registro, ['url' => $caminho.$registro->id, 'method'=>'put', 'files'=>true]) !!}
                 @endif
+                    {!! Form::hidden('id', null) !!}
                     <div class="form-group" >
                         {!! Form::label('nome', 'Nome:') !!}
                         {!! Form::text('nome', null, ['class' => 'form-control', 'autofocus'] ) !!}

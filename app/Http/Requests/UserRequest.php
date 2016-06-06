@@ -25,7 +25,7 @@ class UserRequest extends Request
     {
         $validacao = [
             'name'  => 'required|min:5',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,'.$this->id,
             'password' => 'sometimes|required|between:6,10|confirmed',
             'alterar_senha' => 'sometimes|between:6,10|confirmed',
         ];
