@@ -1,6 +1,6 @@
 <?php
 
-namespace Onicms\Presenters\Cms;
+namespace Onicms\Presenters\Admin;
 
 use Onicms\Presenters\BasePresenter;
 

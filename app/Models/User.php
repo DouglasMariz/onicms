@@ -16,7 +16,7 @@ use Laracasts\Presenter\PresentableTrait;
 class User extends Authenticatable
 {
     use PresentableTrait;
-    protected $presenter = 'Onicms\Presenters\Cms\UserPresenter';
+    protected $presenter = 'Onicms\Presenters\Admin\UserPresenter';
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
