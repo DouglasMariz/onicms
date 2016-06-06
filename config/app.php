@@ -160,6 +160,14 @@ return [
 
         // Deixar o Carbon em pt_br
         Onicms\Providers\CarbonLanguageProvider::class,
+        /**
+         *  Categorias: 
+         */
+        Baum\Providers\BaumServiceProvider::class,
+        /**
+         * Manipulação de imagens:
+         */
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 

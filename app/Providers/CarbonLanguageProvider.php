@@ -1,5 +1,7 @@
 <?php
 
+// https://blog.hernandev.com/pt/traducao-automatica-do-carbon
+
 namespace Onicms\Providers;
 
 use Illuminate\Support\ServiceProvider;

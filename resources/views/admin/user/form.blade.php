@@ -9,9 +9,9 @@
             </div>
             <div class="content">
                 @if(!isset($registro->id))
-                    {!! Form::open(['url' => 'admin/user/', 'files'=>true ]) !!}
+                    {!! Form::open(['url' => $caminho, 'files'=>true ]) !!}
                 @else
-                    {!! Form::model($registro, ['url' => "admin/user/$registro->id/", 'method'=>'put', 'files'=>true]) !!}
+                    {!! Form::model($registro, ['url' => $caminho.$registro->id, 'method'=>'put', 'files'=>true]) !!}
                 @endif
                     <div class="form-group" >
                         {!! Form::label('name', 'Nome:') !!}
@@ -53,9 +53,9 @@
 
                     <div class="form-group" >
                         {!! Form::submit('Gravar', ['class' => 'btn btn-fill btn-success']) !!}
-                        <a href="{{ url('admin/user') }}" class="btn btn-info" ><i class="fa fa-list"></i> Lista</a>
+                        <a href="{{ url($caminho) }}" class="btn btn-info" ><i class="fa fa-list"></i> Lista</a>
                         @if(!empty($registro->id))
-                            <a href="{{ url('admin/user/create') }}" class="btn btn-info" ><i class="fa fa-plus"></i> Novo</a>
+                            <a href="{{ url($caminho.'create') }}" class="btn btn-info" ><i class="fa fa-plus"></i> Novo</a>
                         @endif
                     </div>
                 {!! Form::close() !!}

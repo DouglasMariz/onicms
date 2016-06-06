@@ -1,6 +1,6 @@
 <?php
 
-namespace Onicms\Http\Controllers\Cms\Auth;
+namespace Onicms\Http\Controllers\Admin\Auth;
 
 use Onicms\Models\User;
 use Validator;

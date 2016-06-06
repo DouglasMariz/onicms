@@ -1,6 +1,6 @@
 <?php
 
-namespace Onicms\Http\Controllers\Cms;
+namespace Onicms\Http\Controllers\Admin;
 
 use Onicms\Models\User;
 
@@ -37,6 +37,7 @@ class UserController extends Controller
         return view($this->caminho.'.form',[
                     'titulo' => $this->titulo,
                     'html_toggle' => $html_toggle,
+                    'caminho' => $this->caminho,
                ]);
     }
 
@@ -60,7 +61,8 @@ class UserController extends Controller
         $html_toggle = gerar_status_toggle( $registro );
         return view($this->caminho.'.form', compact('registro'),[
                     'titulo' => $this->titulo,
-                    'html_toggle' => $html_toggle
+                    'html_toggle' => $html_toggle,
+                    'caminho' => $this->caminho,
                ]);
     }
 

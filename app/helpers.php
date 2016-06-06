@@ -83,9 +83,9 @@ function getRotasAdmin()
     //$rotas['admin/configuracoes_site/1/edit'] 	 = 'admin/configuracoes_site/1/edit';
     //$rotas['admin/configuracoes_empresa/1/edit'] = 'admin/configuracoes_empresa/1/edit';
     //$rotas['admin/configuracoes_home/1/edit'] = 'admin/configuracoes_home/1/edit';
-
     $routeCollection = Route::getRoutes();
     foreach ($routeCollection as $value) {
+
         $url = $value->getPath();
         $partes = explode('/', $url);
         $methods = $value->getMethods();

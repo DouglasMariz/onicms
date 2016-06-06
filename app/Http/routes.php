@@ -1,15 +1,17 @@
 <?php
-Route::get('admin/login', 'Cms\Auth\AuthController@getLogin');
-Route::post('admin/login', 'Cms\Auth\AuthController@postLogin');
-Route::get('admin/logout', 'Cms\Auth\AuthController@logout');
+Route::get('admin/login', 'Admin\Auth\AuthController@getLogin');
+Route::post('admin/login', 'Admin\Auth\AuthController@postLogin');
+Route::get('admin/logout', 'Admin\Auth\AuthController@logout');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin' ], function () {
 
-	Route::get('/', 'Cms\HomeController@index');
+	Route::get('/', 'Admin\HomeController@index');
 
-	Route::resource('user', 'Cms\UserController');
+	Route::resource('user', 'Admin\UserController');
 	// Atualizar Status Ajax:
-	Route::post('user/{id}/atualizar_status','Cms\UserController@atualizar_status');
+	Route::post('user/{id}/atualizar_status','Admin\UserController@atualizar_status');
+	// Menu do admin:
+	Route::resource('menu_admin', 'Admin\MenuAdminController');
 
 });
 

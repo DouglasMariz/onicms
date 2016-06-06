@@ -1,6 +1,6 @@
 <?php
 
-namespace Onicms\Http\Controllers\Cms;
+namespace Onicms\Http\Controllers\Admin;
 
 use Onicms\Http\Controllers\Controller;
 
