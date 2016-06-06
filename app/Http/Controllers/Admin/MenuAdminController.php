@@ -50,6 +50,8 @@ class MenuAdminController extends Controller
             $input['parent_id'] = NULL;
         $node = MenuAdmin::create($input);
         $node->save();
+
+        $request->session()->flash('alert-success', config('mensagens.registro_inserido'));
         return redirect($this->caminho.'create');
     }
 
@@ -73,7 +75,7 @@ class MenuAdminController extends Controller
         $update = MenuAdmin::find($id)->update($input);
 
         $request->session()->flash('alert-success', config('mensagens.registro_alterado'));
-        return redirect($this->caminho.$id.'/edit');
+        return redirect($this->caminho.$id);
     }
 
     public function destroy($id)

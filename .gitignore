@@ -2,6 +2,8 @@
 /node_modules
 /public/uploads
 /public/assets
+/bootstrap/compiled.php
+/storage/logs/laravel.log
 Homestead.yaml
 Homestead.json
 .env

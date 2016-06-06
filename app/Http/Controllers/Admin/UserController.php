@@ -52,6 +52,8 @@ class UserController extends Controller
         if(!isset($input['status']))
             $input['status'] = 0;
         User::create($input);
+
+        $request->session()->flash('alert-success', config('mensagens.registro_inserido'));
         return redirect($this->caminho);
     }
 
