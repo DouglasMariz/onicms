@@ -17,6 +17,7 @@
                         <th data-field="nome" data-sortable="true" >Nome</th>
                         <th data-field="url" data-sortable="true" >Destino</th>
                         <th data-field="peso" data-sortable="true" >Peso</th>
+                        <th data-field="status" data-sortable="true" >Status</th>
                         <th data-click-to-select="false" data-align="center" data-searchable="false">Ações</th>
                     </tr>
                     </thead>
@@ -28,6 +29,7 @@
                             <td>{{ $registro->nome }}</td>
                             <td>{{ $registro->url }}</td>
                             <td>{{ $registro->peso }}</td>
+                            <td>{!! $registro->html_toogle !!}</td>
                             <td>
                                 @include('admin/_partes/_botoes_acao')
                             </td>

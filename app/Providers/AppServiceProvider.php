@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.admin', function($view)
         {
             // Obtendo o menu do sistema e jogando para a view do admin:
-            $menu          = MenuAdmin::orderBy('peso')->get()->toHierarchy();
+            $menu          = MenuAdmin::where('status','=','1')->orderBy('peso')->get()->toHierarchy();
             $view->with( array('menu'          => $menu
             ));
         });

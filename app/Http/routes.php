@@ -7,11 +7,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin' ], function () {
 
 	Route::get('/', 'Admin\HomeController@index');
 
+	// User
 	Route::resource('user', 'Admin\UserController');
-	// Atualizar Status Ajax:
-	Route::post('user/{id}/atualizar_status','Admin\UserController@atualizar_status');
+	Route::post('user/{id}/atualizar_status','Admin\UserController@atualizar_status'); // Atualizar Status Ajax
+	
 	// Menu do admin:
 	Route::resource('menu_admin', 'Admin\MenuAdminController');
+	Route::post('menu_admin/{id}/atualizar_status','Admin\MenuAdminController@atualizar_status'); // Atualizar Status Ajax:
 
 });
 

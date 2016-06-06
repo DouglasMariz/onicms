@@ -4,7 +4,7 @@ namespace Onicms\Http\Controllers\Admin;
 
 use Onicms\Models\User;
 
-use Validator, Response;
+use Response;
 use Illuminate\Http\Request;
 
 use Onicms\Http\Requests;
@@ -122,6 +122,7 @@ class UserController extends Controller
         }
         return Response::json($resposta);
     }
+
 }
 
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Onicms\Http\Requests;
 
+use Response;
+
 use Onicms\Models\Admin\MenuAdmin;
 use Onicms\Http\Requests\MenuAdminRequest;
 
@@ -26,6 +28,7 @@ class MenuAdminController extends Controller
     public function index()
     {
         $registros = MenuAdmin::all();
+        $registros = configurar_status_toogle($registros, $this->caminho);
         return view($this->caminho.'.index',['registros'=>$registros],[
                     'titulo'  => $this->titulo,
                     'caminho' => $this->caminho,
@@ -83,4 +86,23 @@ class MenuAdminController extends Controller
         MenuAdmin::find($id)->delete();
         return redirect($this->caminho);
     }
+
+    // Atualiza um campo boolean de um registro via ajax
+    public function atualizar_status($id, $coluna = 'status')
+    {
+        // Verifica o status atual e dá um update com o novo status:
+        $registro = MenuAdmin::find($id);
+        // Se encontrou o registro:
+        if(isset($registro->{$coluna})){
+            $novo = !$registro->{$coluna};
+            $update = MenuAdmin::find($id)->update( array( $coluna =>$novo ) );
+            $resposta['success'] = 'success';
+            $resposta['status']  = '200';
+        }else{
+            $resposta['success'] = 'fail';
+            $resposta['status']  = '0';
+        }
+        return Response::json($resposta);
+    }
+
 }
