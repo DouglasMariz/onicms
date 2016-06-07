@@ -13,8 +13,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin' ], function () {
 	
 	// Menu do admin:
 	Route::resource('menu_admin', 'Admin\MenuAdminController');
-	Route::post('menu_admin/{id}/atualizar_status','Admin\MenuAdminController@atualizar_status'); // Atualizar Status Ajax:
+	Route::post('menu_admin/{id}/atualizar_status','Admin\MenuAdminController@atualizar_status'); // Atualizar Status Ajax
 
+	// Roles (Papéis de usuário):
+	Route::resource('role', 'Admin\RoleController');
+	// Permissões
+	Route::resource('permission', 'Admin\PermissionController');
 });
 
 // Front:

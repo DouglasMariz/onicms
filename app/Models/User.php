@@ -13,8 +13,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Laracasts\Presenter\PresentableTrait;
 
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
+    use HasRoles;
+
     use PresentableTrait;
     protected $presenter = 'Onicms\Presenters\Admin\UserPresenter';
 
@@ -37,4 +41,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getRoleAttribute()
+    {
+        $role = $this->roles[0]->name;
+        return $role;
+    }
 }

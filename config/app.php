@@ -168,6 +168,10 @@ return [
          * Manipulação de imagens:
          */
         Intervention\Image\ImageServiceProvider::class,
+        /**
+         * Sistema de permissões:
+         */
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 

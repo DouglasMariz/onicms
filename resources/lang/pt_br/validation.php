@@ -115,6 +115,7 @@ return [
         'categoria_id'          => 'Categoria',
         'empresas_id'           => 'Empresa',
         'setor_id'              => 'Setor',
+        'role'                  => 'Papel',
     ],
 
 ];

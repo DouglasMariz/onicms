@@ -315,3 +315,9 @@ $.fn.bootstrapTable.locales['pt-BR'] = {
     }
 };
 $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['pt-BR']);
+
+// função para marcar/desmarcar todos os checkboxes
+// recebe o nome da classe dos que serão afetados
+function toggle_check(gatilho, classe){
+    $("." + classe).prop('checked', $("#"+gatilho).prop('checked'));
+}

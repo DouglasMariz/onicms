@@ -14,12 +14,7 @@
                     <tr>
                         <th data-checkbox="true">&nbsp;</th>
                         <th data-field="id" data-sortable="true" >ID</th>
-                        <th data-field="name" data-sortable="true" >Nome</th>
-                        <th data-field="role" >Papel</th>
-                        <th data-field="email" data-sortable="true" >E-mail</th>
-                        <th data-field="status" data-sortable="true" >Status</th>
-                        <th data-field="created_at" data-sortable="true" >Criado em</th>
-                        <th data-field="updated_at" data-sortable="true" >Modificado</th>
+                        <th data-field="nome" data-sortable="true" >Nome</th>
                         <th data-click-to-select="false" data-align="center" data-searchable="false">Ações</th>
                     </tr>
                     </thead>
@@ -28,17 +23,7 @@
                         <tr>
                             <td></td>
                             <td>{{ $registro->id }}</td>
-                            <td>
-                                @if(!empty($registro->foto))
-                                    <img src="{{asset('uploads/users/miniatura/'.$registro->foto)}}" width="40px" class="img-circle"> 
-                                @endif
-                                {{ $registro->name }}
-                            </td>
-                            <td>{{ $registro->roles()->first()->name }}</td>
-                            <td>{{ $registro->email }}</td>
-                            <td>{!! $registro->html_toogle !!}</td>
-                            <td>{{ $registro->present()->createdAt }}</td>
-                            <td>{{ $registro->present()->updatedAt }}</td>
+                            <td>{{ $registro->name }}</td>
                             <td>@include('admin/_partes/_botoes_acao')</td>
                         </tr>
                         @endforeach

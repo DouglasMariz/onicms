@@ -4,7 +4,7 @@ namespace Onicms\Http\Requests;
 
 use Onicms\Http\Requests\Request;
 
-class UserRequest extends Request
+class RoleRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class UserRequest extends Request
     public function rules()
     {
         $validacao = [
-            'name'  => 'required|min:5',
-            'email' => 'required|email|unique:users,email,'.$this->id,
-            'password' => 'sometimes|required|between:6,10|confirmed',
-            'alterar_senha' => 'sometimes|between:6,10|confirmed',
-            'role' => 'required|'
+            'name' => 'required|unique:roles,name,'.$this->id,
         ];
 
         return $validacao;

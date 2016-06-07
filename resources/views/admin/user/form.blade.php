@@ -24,6 +24,11 @@
                         {!! Form::email('email', null, ['class' => 'form-control', 'placeholder'=> 'Digite o e-mail'] ) !!}
                     </div>
 
+                    <div class="form-group">
+                        {!! Form::label('role', 'Papel:') !!}
+                        {!! Form::select('role', $papeis_disponiveis, null, ['class' => 'form-control']) !!}
+                    </div>
+
                     <div class="form-group" >
                         {!! $html_toggle !!}
                     </div>

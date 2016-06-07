@@ -30,9 +30,7 @@
                             <td>{{ $registro->url }}</td>
                             <td>{{ $registro->peso }}</td>
                             <td>{!! $registro->html_toogle !!}</td>
-                            <td>
-                                @include('admin/_partes/_botoes_acao')
-                            </td>
+                            <td>@include('admin/_partes/_botoes_acao')</td>
                         </tr>
                         @endforeach
                     </tbody>
