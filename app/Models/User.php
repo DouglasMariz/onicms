@@ -22,7 +22,7 @@ class User extends Authenticatable
     use PresentableTrait;
     protected $presenter = 'Onicms\Presenters\Admin\UserPresenter';
 
-    use SoftDeletes;
+    //use SoftDeletes;
     protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
@@ -47,8 +47,11 @@ class User extends Authenticatable
         if($this->role_master){
             return 'Administrador geral';
         }
+
         // se não é admin root:
-        $role = $this->roles[0]->name;
-        return $role;
+        if(isset($this->roles[0]->name))
+            return $this->roles[0]->name;
+
+        return '-';
     }
 }

@@ -81,10 +81,11 @@ class MenuAdmin extends Node
 	public function get_menu_clicado()
 	{
 		$rota = Route::getCurrentRoute()->getPath();
-		// as rotas salvas sempre tem '/' no final, então:
-		$rota = $rota.'/';
-		// previne duplicado:
-		$rota = str_replace("//", "/", $rota);
+		// pega apenas admin/algo, ignorando a terceira ação, como create, update...)
+		$uri = explode('/', $rota);
+		$rota = $uri[0].'/';
+		if(isset($uri[1]))
+			$rota .= $uri[1].'/';
 		// obtém o menu desta rota:
 		$menu = MenuAdmin::where('url', '=', $rota)->first();
 		if(isset($menu->id)){

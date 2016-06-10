@@ -5,7 +5,7 @@ namespace Onicms\Http\Controllers\Admin;
 use Onicms\Models\User;
 use Spatie\Permission\Models\Role;
 
-use Response;
+use Response, Auth, Session;
 use Illuminate\Http\Request;
 
 use Onicms\Http\Requests;
@@ -25,7 +25,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $registros = User::all();
+        // o admin geral não aparece nos usuários e apenas ele pode editar seu próprio registro
+        // o admin geral é único
+        $registros = User::where('role_master', '=', 0)->get();
         $registros = configurar_status_toogle($registros, $this->caminho);
         return view($this->caminho.'.index',['registros'=>$registros],[
                     'titulo' => $this->titulo,
@@ -50,6 +52,9 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $input = $request->all();
+
+        // o role master é único no sistema:
+        $input['role_master'] = 0;
         if(isset($input['password'])){
             $input['password'] = bcrypt($input['password']);
         }
@@ -70,6 +75,13 @@ class UserController extends Controller
     public function show($id)
     {
         $registro = User::where('id', '=', $id)->with('roles')->first();
+
+        // não mostra o admin master se for outro usuário tentando acessá-lo:
+        if( (!Auth::user()->role_master) && ($registro->role_master) ){
+            Session::flash('alert-warning', 'Acesso negado');
+            return redirect($this->caminho);
+        }
+
         $html_toggle = gerar_status_toggle( $registro );
         return view($this->caminho.'.form', compact('registro'),[
                     'titulo' => $this->titulo,
@@ -82,8 +94,10 @@ class UserController extends Controller
     public function update(UserRequest $request, $id)
     {
 
-        if(!$this->tem_permissao('Usuários: editar'))
-            return redirect($this->caminho.$id.'');
+        // Um usuário pode alterar seus dados, mas só alguns usuários podem editar outros:
+        if((Auth::user()->id != $id))
+            if(!$this->tem_permissao('Usuários: editar'))
+                return redirect($this->caminho.$id.'');
 
         $input = $request->all();
         if(isset($input['alterar_senha']) && !empty($input['alterar_senha']) ){
@@ -91,6 +105,7 @@ class UserController extends Controller
         }
         if(!isset($input['status']))
             $input['status'] = 0;
+
         $user = User::find($id)->update($input);
 
         // limpa os papéis existentes para inserir o novo caso tenha alterado:

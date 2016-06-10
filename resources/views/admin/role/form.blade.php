@@ -49,7 +49,8 @@
                 @foreach($permissoes_disponiveis as $permissao)
                     <p>
                         <label>
-                        <input type="checkbox" name="permissoes[]" class="permissoes" id="p-{{ $permissao->id }}" value="{{ $permissao->name }}" <?php if($registro->hasPermissionTo($permissao->name)) echo 'checked="checked"'; ?> > {{ $permissao->name }} 
+                        <input type="checkbox" name="permissoes[]" class="permissoes" id="p-{{ $permissao->id }}" value="{{ $permissao->name }}" 
+                        <?php if(isset($registro) && $registro->hasPermissionTo($permissao->name)) echo 'checked="checked"'; ?> > {{ $permissao->name }} 
                         </label>
                     </p>
                 @endforeach

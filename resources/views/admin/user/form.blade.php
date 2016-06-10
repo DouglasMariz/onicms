@@ -29,10 +29,6 @@
                         {!! Form::select('role', $papeis_disponiveis, null, ['class' => 'form-control']) !!}
                     </div>
 
-                    <div class="form-group" >
-                        {!! $html_toggle !!}
-                    </div>
-
                     @if(empty($registro->id))
                         <div class="form-group" >
                             {!! Form::label('password', 'Senha:') !!}
@@ -56,6 +52,10 @@
                             {!! Form::password('alterar_senha_confirmation', ['class' => 'form-control'] ) !!}
                         </div>
                     @endif
+
+                    <div class="form-group" >
+                        {!! $html_toggle !!}
+                    </div>
 
                     <div class="form-group" >
                         {!! Form::submit('Gravar', ['class' => 'btn btn-fill btn-success']) !!}

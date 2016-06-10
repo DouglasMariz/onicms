@@ -19,17 +19,4 @@ class UserPresenter extends BasePresenter
 
         return ucfirst($nome);
     }
-
-    public function papel()
-    {
-        // se for master:
-        if($this->role_master){
-            return 'Administrador geral';
-        }
-
-        if(isset($registro->roles()->first()->name))
-            return $registro->roles()->first()->name;
-
-        return '-';
-    }
 }
