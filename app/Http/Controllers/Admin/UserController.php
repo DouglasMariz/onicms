@@ -5,7 +5,7 @@ namespace Onicms\Http\Controllers\Admin;
 use Onicms\Models\User;
 use Spatie\Permission\Models\Role;
 
-use Response, Auth, URL;
+use Response;
 use Illuminate\Http\Request;
 
 use Onicms\Http\Requests;
@@ -35,6 +35,9 @@ class UserController extends Controller
 
     public function create()
     {
+        if(!$this->tem_permissao('Usuários: cadastrar'))
+            return redirect($this->caminho);
+
         $html_toggle = gerar_status_toggle( array('status' => 1) ); 
         return view($this->caminho.'.form',[
                     'titulo' => $this->titulo,
@@ -78,11 +81,9 @@ class UserController extends Controller
 
     public function update(UserRequest $request, $id)
     {
-        // O usuário pode?
-        if(!Auth::user()->can('Usuário: editar')){
-            $request->session()->flash('alert-warning', 'Você não tem permissão para esta operação');
+
+        if(!$this->tem_permissao('Usuários: editar'))
             return redirect($this->caminho.$id.'');
-        }
 
         $input = $request->all();
         if(isset($input['alterar_senha']) && !empty($input['alterar_senha']) ){

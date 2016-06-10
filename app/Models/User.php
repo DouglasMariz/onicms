@@ -30,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'status'
+        'name', 'email', 'password', 'status', 'role_master'
     ];
 
     /**
@@ -44,6 +44,10 @@ class User extends Authenticatable
 
     public function getRoleAttribute()
     {
+        if($this->role_master){
+            return 'Administrador geral';
+        }
+        // se não é admin root:
         $role = $this->roles[0]->name;
         return $role;
     }

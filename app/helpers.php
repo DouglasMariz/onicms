@@ -1,36 +1,5 @@
 <?php
 
-// renderiza o menu do admin
-function renderizarMenuAdmin($menu) {
-
-    $icone = '';
-    if(!empty($menu->icone))
-    	$icone = '<i class="'.$menu->icone.'" ></i> ';
-
-    $href = '#';
-    if(!empty($menu->url))
-    	$href = url($menu->url);
-
-    if( $menu->isLeaf() ) {
-      return '<li><a href="'.$href.'" >' .$icone. $menu->nome . '</a></li>';
-    } else {
-      $html = '<li><a href="#submenu'.$menu->id.'" data-toggle="collapse">' .$icone. $menu->nome.'</a>';
-
-      $html .= '<div class="collapse" id="submenu'.$menu->id.'">';
-      $html .= '<ul class="nav">';
-
-      foreach($menu->children as $filho)
-        $html .= renderizarMenuAdmin($filho);
-
-      $html .= '</ul>';
-      $html .= '</div>';
-
-      $html .= '</li>';
-    }
-
-  return $html;
-}
-
 function renderizarProdutosCategorias($categoria, $somente_pais = false) {
 
     $html = '';

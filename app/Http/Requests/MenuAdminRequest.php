@@ -25,7 +25,7 @@ class MenuAdminRequest extends Request
     {
         $validacao = [
             'nome'  => 'required',
-            'url'   => 'required',
+            'url'   => '',
         ];
         return $validacao;
     }

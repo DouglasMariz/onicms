@@ -34,7 +34,7 @@
                                 @endif
                                 {{ $registro->name }}
                             </td>
-                            <td>{{ $registro->roles()->first()->name }}</td>
+                            <td>{{ $registro->present()->papel }}</td>
                             <td>{{ $registro->email }}</td>
                             <td>{!! $registro->html_toogle !!}</td>
                             <td>{{ $registro->present()->createdAt }}</td>

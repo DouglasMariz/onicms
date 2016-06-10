@@ -16,5 +16,12 @@ class DatabaseSeeder extends Seeder
             'email'    => 'admin@onidigital.com',
             'password' => bcrypt('oni35224837')
         ]);
+
+        // Menus:
+        DB::table('menu_admin')->insert([
+            'name' => 'Sistema',
+            'lft'  => '1',
+            'password' => bcrypt('oni35224837')
+        ]);
     }
 }
