@@ -13,9 +13,6 @@
 - $ php artisan db:seed
 - $ gulp
 
-## Utilização:
-- Login do admin: admin@onidigital.com, senha: oni35224837
-
 ## Recursos atuais:
 - Login/Logout de usuário
 - Cadastro de usuários do sistema
